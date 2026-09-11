@@ -1,0 +1,28 @@
+Browser validation — 2026-09-11 UTC, Chromium via Playwright
+
+Automated/domain:
+- node tests/model.test.mjs -> PASS
+- node --check app.mjs / model.mjs -> PASS
+
+End-to-end interaction checks:
+- Removing both producers produced explicit feedback that animals need a food-energy source; Reset restored all organisms and the viable meadow.
+- Dry-spell start: Sun 70, Water 20, Grass/Clover 65. One manual step changed Grass/Clover to 61 and explained that plants declined because growth is limited by the lower of sunlight/water. The chosen prediction “Plants will decline first” was marked as matching the plant direction.
+- Auto-run was started, allowed to advance, then paused; manual state remained usable.
+- Experiment Reset restored the selected dry scenario to Sun 70, Water 20 and cleared prediction to none.
+- Restore challenge started at balance score 27 with Sun 30 / Water 20. Diagnose identified low resources as limiting.
+- After setting Sun/Water to 80 and taking six deterministic steps, balance rose to 35 through model rules; no win animation or unexplained state change was used.
+- Restore Reset returned score 27, Sun 30, Water 20.
+- Finish reached Done.
+
+Responsive evidence:
+- 360 × 800: Build habitat; no horizontal overflow.
+- 768 × 900: Predict & experiment after dry-spell step; no horizontal overflow.
+- 1280 × 900: Restore challenge after six recovery steps; no horizontal overflow.
+- Native controls are keyboard-focusable and CSS defines visible `:focus-visible` outlines.
+
+Screenshots:
+1. 01-mobile-360-build.png
+2. 02-tablet-768-experiment.png
+3. 03-desktop-1280-restore.png
+
+Reduced-motion CSS is present; OS-level reduced-motion emulation was not run. No testing with children was conducted.
